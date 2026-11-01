@@ -1,6 +1,6 @@
 # Voice of Customer Copilot
 
-Turns Groww Play Store reviews into prioritized, evidence-backed decisions for a PM. See `docs/PRD.md` and `docs/system_spec.md`.
+Turns app-store reviews into prioritized, evidence-backed decisions for a PM. See `docs/PRD.md` and `docs/system_spec.md`.
 
 ## Setup
 Python 3.12 virtual environment lives in `.venv` (created with uv). Run everything from the project root with `.venv/bin/python -I`.
