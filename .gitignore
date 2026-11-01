@@ -1,0 +1,26 @@
+# secrets and local environment
+.env
+.venv/
+__pycache__/
+.DS_Store
+.claude/settings.local.json
+
+# raw review files contain reviewer names and photo links; never publish
+data/raw/
+
+# caches and run outputs (rebuildable)
+data/llm_cache.db*
+data/app.db
+runs/
+
+# anything containing real review text: never publish (see docs/data_terms_note.md)
+app/snapshot.json
+data/golden/
+data/external_labeling/
+
+# the real labeling guide quotes real reviews; the public copy is docs/labeling_guide_public.md
+docs/labeling_guide.md
+scripts/make_public_guide.py
+
+# editor and tool settings
+.claude/
