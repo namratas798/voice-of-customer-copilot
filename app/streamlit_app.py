@@ -254,6 +254,7 @@ with tabs[5]:
     if submitted and not text.strip():
         st.warning("Write or paste a review first.")
     elif submitted:
+        detail = ""
         st.session_state["tries"] = used + 1
         if not take_live_call():
             label, errors = None, ["The live demo has reached its limit for today. Try again tomorrow."]
@@ -265,8 +266,12 @@ with tabs[5]:
                     daily = type(e).__name__ == "DailyLimit"
                     label, errors = None, ["The free model has reached its limit for today. Try again tomorrow." if daily
                                            else "The demo is busy right now. Try again later."]
+                    # our own error messages never contain a key, so a short detail is safe to show
+                    detail = type(e).__name__ + (": " + str(e)[:140] if type(e).__name__ == "ProviderError" else "")
         if label is None:
             st.error("; ".join(errors))
+            if detail:
+                st.caption("Technical detail: %s" % detail)
         else:
             st.write("**Usable:** %s · **Overall:** %s" % (label["usable"], label["overall_sentiment"]))
             for a in label["aspects"]:
