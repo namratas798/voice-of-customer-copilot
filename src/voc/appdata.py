@@ -86,11 +86,18 @@ def release_table(snap: dict) -> dict:
     return {"versions": rows, "comparisons": comps, "unknown": regress.unknown_bucket(rv), "min_n": regress.MIN_N}
 
 
+def live_cache_path() -> str:
+    """Where the live feature keeps its small cache. A temporary folder, because a host's checkout has no data/ folder."""
+    import os
+    import tempfile
+    return os.path.join(tempfile.gettempdir(), "voc_live_cache.db")
+
+
 def label_one(text: str, stars: int, root: str = "."):
     """Live labeling of one pasted review with the pipeline's own extractor. Returns (label or None, errors)."""
     from . import extract
     from .llm import LLM
-    llm = LLM(root + "/data/llm_cache.db", wait_on_daily=False)
+    llm = LLM(live_cache_path(), wait_on_daily=False)
     review = {"reviewId": "pasted", "content": text.strip(), "score": int(stars)}
     system = extract.build_system(root, mode="flags")
     res = extract.extract_review(llm, review, system, ["openai/gpt-oss-20b"], "low", mode="flags")

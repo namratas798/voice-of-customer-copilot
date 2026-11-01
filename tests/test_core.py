@@ -497,6 +497,14 @@ class AppDataTests(unittest.TestCase):
         self.assertEqual(d["severity_mix"], {"critical": 3, "low": 3})
         self.assertEqual(d["reviews"][0]["aspects"][0]["flags"], ["money_blocked"])
 
+    def test_live_feature_cache_does_not_need_a_data_folder(self):
+        import os
+        from voc import appdata
+        path = appdata.live_cache_path()
+        self.assertTrue(os.path.isdir(os.path.dirname(path)))     # the folder exists on any machine
+        LLM(path)                                                  # and the cache can be created there
+        self.assertNotIn("data" + os.sep, path.replace(os.path.dirname(path), ""))
+
     def test_plain_facts_hides_event_described_and_uses_plain_words(self):
         from voc import appdata
         impact = {"event_described": True, "money_blocked": True, "core_action_blocked": True, "order_wrong": False}
