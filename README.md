@@ -1,6 +1,8 @@
 # Voice of Customer Copilot
 
-Turns app-store reviews into prioritized, evidence-backed decisions for a PM. See `docs/PRD.md` and `docs/system_spec.md`.
+Turns app reviews into prioritized, evidence-backed decisions for a PM. See `docs/PRD.md` and `docs/system_spec.md`.
+
+Check it out here: https://voice-of-customer-copilot-f6achlhlvutr6xyye3sdms.streamlit.app/
 
 ## Setup
 Python 3.12 virtual environment lives in `.venv` (created with uv). Run everything from the project root with `.venv/bin/python -I`.
