@@ -89,7 +89,7 @@ Each reference problem can be matched once. Unmatched ones are misses, unmatched
 **Why "usable" is only 75%:** most disagreements are short praise such as "Easy to use". One labeler treats it as a usable praise, the other as nothing to analyse. The guide's wording does not settle it. Praise does not change the fix list.
 
 ## 6. Bars set in advance
-The targets were written down before the results were seen (PRD section 10): for example critical issues caught at least 90%, problem-finding score at least 0.75, sentiment kappa at least 0.70, theme coherence at least 85%. A result that misses its bar is reported as missed.
+The targets were written down before the results were seen (`docs/evaluation_checklist.md`): for example critical issues caught at least 90%, problem-finding score at least 0.75, sentiment kappa at least 0.70, theme coherence at least 85%. A result that misses its bar is reported as missed.
 
 ## 7. How to recompute any number
 | Number | Command (from the project folder) |
